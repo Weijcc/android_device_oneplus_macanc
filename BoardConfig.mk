@@ -37,3 +37,7 @@ TARGET_RECOVERY_UI_MARGIN_HEIGHT := 103
 
 # Include the proprietary files BoardConfig.
 include vendor/oneplus/macanc/BoardConfigVendor.mk
+
+# Legacy vendor blobs have unresolved symbols (face_tee_*, WFD audio ABI)
+BUILD_BROKEN_PREBUILT_ELF_FILES := true
+
