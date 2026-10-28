@@ -1,0 +1,11 @@
+#
+# Copyright (C) 2026 The LineageOS Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+# Ensure ADB is enabled early in boot so boot logs can be captured over adb.
+# Charger mode leaves persist.sys.usb.config=mass_storage behind, so reset the
+# persisted USB configuration before init.usb.rc reads it on the boot trigger.
+on early-boot
+    setprop persist.sys.usb.config adb

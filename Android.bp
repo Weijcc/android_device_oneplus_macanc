@@ -1,2 +1,27 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
 soong_namespace {
+}
+
+// OnePlus ships the audio calibration database on /odm, but the QTI AGM
+// service built from source looks it up under
+// /vendor/etc/acdbdata/<sound-card-name> (here "alor-mtp-wcd9378-snd-card").
+// Stock's own AGM uses the platform folder "canoe_mtp" instead. Link both
+// names to it so agm_init() finds the calibration; without it audiohalservice
+// aborts and the watchdog kills system_server during boot.
+install_symlink {
+    name: "acdbdata_alor_mtp_wcd9378_symlink",
+    vendor: true,
+    installed_location: "etc/acdbdata/alor_mtp_wcd9378",
+    symlink_target: "/vendor/etc/acdbdata/canoe_mtp",
+}
+
+install_symlink {
+    name: "acdbdata_alor_mtp_symlink",
+    vendor: true,
+    installed_location: "etc/acdbdata/alor_mtp",
+    symlink_target: "/vendor/etc/acdbdata/canoe_mtp",
 }

@@ -1,0 +1,49 @@
+# Extra proprietary files used by this device
+#
+# The sm8850-common device tree is an upstream LineageOS repo and must stay
+# untouched, so the blobs below are not listed in its proprietary-files.txt.
+# They live in the Weijcc-owned vendor repo instead:
+#   vendor/oneplus/sm8850-common/proprietary/
+# and are installed by the copy rules appended to:
+#   vendor/oneplus/sm8850-common/sm8850-common-vendor.mk
+#
+# Keep this list in sync if the vendor repo is ever regenerated with
+# extract-files.py (in that case a fork of the sm8850-common device tree or a
+# local supplemental extraction list is required).
+
+# ACDB used by the stock AGM
+vendor/etc/acdbdata/canoe_mtp/MTP_acdb_cal.acdb
+vendor/etc/acdbdata/canoe_mtp/MTP_workspaceFileXml.qwsp
+vendor/etc/acdbdata/canoe_qrd/QRD_acdb_cal.acdb
+vendor/etc/acdbdata/canoe_qrd/QRD_workspaceFileXml.qwsp
+
+# Init services
+vendor/bin/boringssl_self_test32
+vendor/bin/cnss_diag
+vendor/bin/diag_mdlog
+vendor/bin/init.crda.sh
+vendor/bin/init.qcom.sdio.sh
+odm/bin/vendor.autochmod.sh
+odm/bin/wifi_diag
+odm/bin/wifisar
+
+# ADSP audio modules (DSP searches /vendor/dsp)
+vendor/dsp/libtfadsp_sb5_5_rx.so
+vendor/dsp/libtfadsp_sb5_5_tx.so
+
+# Haptic firmware
+odm/firmware/aw8697_haptic_170.bin
+odm/firmware/aw8697_haptic_170_soft.bin
+odm/firmware/aw8697_haptic.bin
+odm/firmware/awinic_haptic_params.bin
+odm/firmware/awinic_haptic_gun_params.bin
+
+# perf HAL resource/hint configs
+vendor/etc/perf/avcsysnodesconfigs.xml
+vendor/etc/perf/factorsconfig.xml
+vendor/etc/perf/pinnerconfigstore.xml
+vendor/etc/perf/qapeboostsconfig.xml
+vendor/etc/perf/qapegameconfig.txt
+
+# Face HAL dependency (real 28 MB library, replaces the DUMMY_SHARED_LIB stub)
+odm/lib64/libstfaceunlockocl_uff.so
